@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html" />
+<h:head>
+	<title>Delivery WEB</title>
+	<h:outputStylesheet library="css" name="grid.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<div id="blocoCabecalho">
+		<div class="container">
+			<h:graphicImage library="imagens" name="logo1.png" id="logoCompany" />
+		</div>
+	</div>
+	<br></br>
+	<br></br>
+	<h2>LOGIN</h2>
+	<div id="blocoConteudo">
+		<div class="container">
+			<h:form id="dados">
+				<fieldset>
+					<legend>Informe seus dados</legend>
+					<h:panelGrid columns="2">
+						<p:outputLabel for="nome" value="Nome Usuário:" />
+						<p:inputText id="nome" value="#{loginMB.usuario.nome}" />
+
+						<p:outputLabel for="senha" value="Senha:" />
+						<p:password id="senha" value="#{loginMB.usuario.senha}" />
+
+						<p:commandButton value="Enviar" icon="ui-icon-star"
+							action="#{loginMB.envia}" ajax="false">
+						</p:commandButton>
+						<h:outputLink value="http://localhost:8080/myapp/rec.xhtml">Recuperar Senha</h:outputLink>
+					</h:panelGrid>
+
+				</fieldset>
+			</h:form>
+			<div id="blocoRodape">
+				<div class="container">
+					<p>Copyright 2016. Todos os direitos reservados</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
