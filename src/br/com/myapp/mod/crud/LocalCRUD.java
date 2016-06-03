@@ -33,4 +33,10 @@ public class LocalCRUD {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	public List<Local> listar2(){
+		String jpql = "Select l.nome from Local l order by l.nome";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 }

@@ -37,6 +37,11 @@ public class CartaoMB {
 	public List<Cartao> getListaCartao() {
 		return listaCartao;
 	}
+	public List<Cartao> listaCartao2 = new ArrayList<Cartao>();
+
+	public List<Cartao> getListaCartao2() {
+		return listaCartao2;
+	}
 
 	@PostConstruct // É importante colocar suas inicializações no post construct
 					// e não no construtor da classe, isso porque se você
@@ -50,6 +55,7 @@ public class CartaoMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		CartaoCRUD crud = new CartaoCRUD(em);
 		listaCartao = crud.listar();
+		listaCartao2 = crud.listar2();
 		em.close();
 	}
 

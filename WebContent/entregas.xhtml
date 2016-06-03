@@ -40,6 +40,12 @@
 				url="http://localhost:8080/myapp/usermobile.xhtml" />
 			<p:menuitem value="Entregas"
 				url="http://localhost:8080/myapp/entregas.xhtml" />
+			<p:menuitem value="Itens"
+				url="http://localhost:8080/myapp/item.xhtml" />
+			<p:menuitem value="Categoria"
+				url="http://localhost:8080/myapp/categoria.xhtml" />
+			<p:menuitem value="Cardapio"
+				url="http://localhost:8080/myapp/cardapio.xhtml" />
 			<p:menuitem value="logout"
 				url="http://localhost:8080/myapp/resources/img/222.gif" />
 		</p:breadCrumb>
@@ -56,23 +62,15 @@
 							rendered="#{entregasMB.entregas.id != null}" />
 						<h:inputText id="id" value="#{entregasMB.entregas.id}"
 							rendered="#{entregasMB.entregas.id != null}" readonly="true" />
-
 						<h:outputLabel value="Pedido:" for="nome" />
 						<h:inputText id="nome" value="#{entregasMB.entregas.nome}" />
-
 						<h:outputLabel value="Quantidade:" for="quantidade" />
 						<h:inputText id="quantidade"
 							value="#{entregasMB.entregas.quantidade}" />
-
-
 						<h:outputLabel value="Total:" for="total" />
 						<h:inputText id="total" value="#{entregasMB.entregas.total}" />
-
-
 						<h:outputLabel value="Status:" for="status" />
 						<h:inputText id="status" value="#{entregasMB.entregas.status}" />
-
-
 						<h:commandButton action="#{entregasMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>

@@ -40,6 +40,12 @@
 				url="http://localhost:8080/myapp/usermobile.xhtml" />
 			<p:menuitem value="Entregas"
 				url="http://localhost:8080/myapp/entregas.xhtml" />
+			<p:menuitem value="Itens"
+				url="http://localhost:8080/myapp/item.xhtml" />
+			<p:menuitem value="Categoria"
+				url="http://localhost:8080/myapp/categoria.xhtml" />
+			<p:menuitem value="Cardapio"
+				url="http://localhost:8080/myapp/cardapio.xhtml" />
 			<p:menuitem value="logout"
 				url="http://localhost:8080/myapp/resources/img/222.gif" />
 		</p:breadCrumb>
@@ -56,7 +62,7 @@
 						<h:inputText id="id" value="#{pedidoMB.pedido.id}"
 							rendered="#{pedidoMB.pedido.id != null}" readonly="true" />
 
-						
+
 						<h:outputLabel value="Prato:" for="nomeprato" />
 						<h:inputText id="nomeprato" value="#{pedidoMB.pedido.nomeprato}" />
 						<h:outputLabel value="Quantidade:" for="quantidade" />
@@ -64,9 +70,13 @@
 						<h:outputLabel value="Preço:" for="totalvalor" />
 						<h:inputText id="totalvalor" value="#{pedidoMB.pedido.totalvalor}" />
 						<h:outputLabel value="Pagamento/Troco:" for="formapagamento" />
-						<h:inputText id="formapagamento" value="#{pedidoMB.pedido.formapagamento}" />
-						<h:outputLabel value="Local de Entrega:" for="localentrega" />
-						<h:inputText id="localentrega" value="#{pedidoMB.pedido.localentrega}" />
+						<h:inputText id="formapagamento"
+							value="#{pedidoMB.pedido.formapagamento}" />
+						<p:outputLabel for="local" value="Local de Entrega: " />
+						<p:selectOneMenu id="local" value="#{pedidoMB.pedido.localentrega}">
+							<f:selectItem itemLabel="Selecione um" itemValue="" />
+							<f:selectItems value="#{localMB.listaLocal2}" />
+						</p:selectOneMenu>
 						<h:commandButton action="#{pedidoMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -79,7 +89,7 @@
 				<h:dataTable value="#{pedidoMB.listaPedido}" var="pedido"
 					styleClass="dados" rowClasses="impar,par">
 
-					
+
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Prato" />
@@ -94,22 +104,22 @@
 						</f:facet>
 					#{pedido.quantidade}
 				</h:column>
-				
-				<h:column>
+
+					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Valor" />
 						</f:facet>
 					#{pedido.totalvalor}
 				</h:column>
-				
-				<h:column>
+
+					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Pagamento/Troco" />
 						</f:facet>
 					#{pedido.formapagamento}
 				</h:column>
-				
-				<h:column>
+
+					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Local de Entrega" />
 						</f:facet>

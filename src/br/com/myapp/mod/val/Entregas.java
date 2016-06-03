@@ -3,8 +3,8 @@ package br.com.myapp.mod.val;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+
 
 @Entity
 public class Entregas {
@@ -15,10 +15,6 @@ public class Entregas {
 	private int quantidade;
 	private double total;
 	private String status;
-	
-	@ManyToOne
-	@JoinColumn // colocar um apelido
-	private Pedido localentrega;
 	
 
 	public Long getId() {
