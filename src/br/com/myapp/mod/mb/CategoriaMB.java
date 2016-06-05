@@ -30,11 +30,18 @@ private Categoria categoria = new Categoria();
 		return listaCategoria;
 	}
 	
+	public List<Categoria> listaCategoria2 = new ArrayList<Categoria>();
+	
+	public List<Categoria> getListaCategoria2(){
+		return listaCategoria2;
+	}
+	
 	@PostConstruct
 	public void carregarCategoria(){
 		EntityManager em = JPAUtil.getEntityManager();
 		CategoriaCRUD crud = new CategoriaCRUD(em);
 		listaCategoria = crud.listar();
+		listaCategoria2 = crud.listar2();
 		em.close();
 	}
 	

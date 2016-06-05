@@ -32,5 +32,11 @@ public class CategoriaCRUD {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	public List<Categoria> listar2(){
+		String jpql = "Select c.nome from Categoria c order by c.nome";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 
 }
