@@ -64,12 +64,12 @@
 
 						<h:outputLabel value="Nome:" for="item" />
 						<h:inputText id="item" value="#{itemMB.item.nome}" />
-						<h:outputLabel value="Descrição Simples:" for="descsimples" />
-						<p:inputTextarea rows="3" cols="20" id="descsimples"
-							value="#{itemMB.item.descsimples}" />
-						<h:outputLabel value="Descrição Completa:" for="desccompleta" />
-						<p:inputTextarea rows="6" cols="20" id="desccompleta"
-							value="#{itemMB.item.desccompleta}" />
+						<h:outputLabel value="Descrição Simples:" for="descricaoSimples" />
+						<p:inputTextarea rows="3" cols="20" id="descricaoSimples"
+							value="#{itemMB.item.descricaoSimples}" />
+						<h:outputLabel value="Descrição Completa:" for="descricaoCompleta" />
+						<p:inputTextarea rows="6" cols="20" id="descricaoCompleta"
+							value="#{itemMB.item.descricaoCompleta}" />
 						<h:outputLabel value="Preço:" for="preco" />
 						<h:inputText id="preco" value="#{itemMB.item.preco}" />
 						<h:commandButton value="Salvar" action="#{itemMB.salvar}">
@@ -95,14 +95,14 @@
 						<f:facet name="header">
 							<h:outputText value="Descrição Simples" />
 						</f:facet>
-					#{item.descsimples}
+					#{item.descricaoSimples}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Descrição Completa" />
 						</f:facet>
-					#{item.desccompleta}
+					#{item.descricaoCompleta}
 				</h:column>
 
 					<h:column>

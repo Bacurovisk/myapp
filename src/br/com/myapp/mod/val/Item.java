@@ -10,7 +10,7 @@ public class Item {
 	@GeneratedValue
 	private Long id;
 	private String nome;
-	private String descricaoSilmple;
+	private String descricaoSimples;
 	private String descricaoCompleta;
 	private float preco;
 	
@@ -28,11 +28,11 @@ public class Item {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDescricaoSilmple() {
-		return descricaoSilmple;
+	public String getDescricaoSimples() {
+		return descricaoSimples;
 	}
-	public void setDescricaoSilmple(String descricaoSilmple) {
-		this.descricaoSilmple = descricaoSilmple;
+	public void setDescricaoSimples(String descricaoSimples) {
+		this.descricaoSimples = descricaoSimples;
 	}
 	public String getDescricaoCompleta() {
 		return descricaoCompleta;

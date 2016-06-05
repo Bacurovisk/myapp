@@ -30,7 +30,7 @@ public class ItemCRUD {
 	}
 	
 	public List<Item> listar(){
-		String jpql = "Select c from item c order by c.nome";
+		String jpql = "Select c from Item c order by c.nome";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
