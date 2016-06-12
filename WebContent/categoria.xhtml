@@ -58,13 +58,13 @@
 					<legend>Dados da Categoria</legend>
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
-							rendered="#{categoriaMB.categoria.id != null}" />
-						<h:inputText id="id" value="#{categoriaMB.categoria.id}"
-							rendered="#{categoriaMB.categoria.id != null}" readonly="true" />
+							rendered="#{categoriaMB.categoria.categoriaId != null}" />
+						<h:inputText id="id" value="#{categoriaMB.categoria.categoriaId}"
+							rendered="#{categoriaMB.categoria.categoriaId != null}" readonly="true" />
 						<h:outputLabel value="Nome:" for="categoria" />
-						<h:inputText id="categoria" value="#{categoriaMB.categoria.nome}" />
+						<h:inputText id="categoria" value="#{categoriaMB.categoria.categoriaNome}" />
 						<h:outputLabel value="Item:" for="item" />
-						<h:inputText id="item" value="#{categoriaMB.categoria.item}" />
+						<h:inputText id="item" value="#{categoriaMB.categoria.categoriaItem}" />
 						<h:commandButton value="Salvar" action="#{categoriaMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -81,14 +81,14 @@
 						<f:facet name="header">
 							<h:outputText value="Nome" />
 						</f:facet>
-					#{categoria.nome}
+					#{categoria.categoriaNome}
 				</h:column>
 				
 				<h:column>
 						<f:facet name="header">
 							<h:outputText value="Item" />
 						</f:facet>
-					#{categoria.item}
+					#{categoria.categoriaItem}
 				</h:column>
 
 

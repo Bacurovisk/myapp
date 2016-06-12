@@ -58,30 +58,31 @@
 					<legend>Dados do Cardapio</legend>
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
-							rendered="#{cardapioMB.cardapio.id != null}" />
-						<h:inputText id="id" value="#{cardapioMB.cardapio.id}"
-							rendered="#{cardapioMB.cardapio.id != null}" readonly="true" />
+							rendered="#{cardapioMB.cardapio.cardapioId != null}" />
+						<h:inputText id="id" value="#{cardapioMB.cardapio.cardapioId}"
+							rendered="#{cardapioMB.cardapio.cardapioId != null}" readonly="true" />
 
-						<h:outputLabel value="Nome:" for="nome" />
-						<h:inputText id="nome" value="#{cardapioMB.cardapio.nome}" />
+						<h:outputLabel value="Titulo Cardapio:" for="nome" />
+						<h:inputText id="nome" value="#{cardapioMB.cardapio.cardapioTitulo}" />
 
 						<h:outputLabel value="Periodo:" for="periodo" />
-						<h:inputText id="periodo" value="#{cardapioMB.cardapio.periodo}" />
+						<h:inputText id="periodo" value="#{cardapioMB.cardapio.cardapioPeriodo}" />
 
 						<h:outputLabel value="Informações Extra:" for="extra" />
-						<h:inputText id="extra" value="#{cardapioMB.cardapio.extra}" />
+						<h:inputText id="extra" value="#{cardapioMB.cardapio.cardapioExtra}" />
 
 						<h:outputLabel value="Categoria:" for="categoria" />
 						<h:inputText id="categoria"
-							value="#{cardapioMB.cardapio.categoria}" />
+							value="#{cardapioMB.cardapio.categoria.categoriaId}" />
 
 						<h:outputLabel value="Descrição Simples:" for="descsimples" />
 						<p:inputTextarea rows="3" cols="20" id="descsimples"
-							value="#{cardapioMB.cardapio.descsimples}" />
+							value="#{cardapioMB.cardapio.descSimples}" />
 
 						<h:commandButton value="Salvar" action="#{cardapioMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
+						
 					</h:panelGrid>
 				</fieldset>
 			</h:form>
@@ -95,35 +96,35 @@
 						<f:facet name="header">
 							<h:outputText value="Nome" />
 						</f:facet>
-					#{cardapio.nome}
+					#{cardapio.cardapioTitulo}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Periodo" />
 						</f:facet>
-					#{cardapio.periodo}
+					#{cardapio.cardapioPeriodo}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Inf. Extras" />
 						</f:facet>
-					#{cardapio.extra}
+					#{cardapio.cardapioExtra}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Categoria" />
 						</f:facet>
-					#{cardapio.categoria}
+					#{cardapio.categoria.categoriaNome}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Descrição Simples" />
 						</f:facet>
-					#{cardapio.descsimples}
+					#{cardapio.descSimples}
 				</h:column>
 
 					<h:column>

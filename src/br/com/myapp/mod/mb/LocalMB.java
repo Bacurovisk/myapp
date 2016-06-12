@@ -8,9 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.val.Local;
-import br.com.myapp.mod.crud.LocalCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Local;
+import br.com.myapp.mod.dao.LocalDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
@@ -31,27 +31,20 @@ public class LocalMB {
 		public List<Local> getListaLocal() {
 			return listaLocal;
 		}	
-		
-		public List<Local> listaLocal2 = new ArrayList<Local>();
-		
-		public List<Local> getListaLocal2() {
-			return listaLocal2;
-		}
 
 		@PostConstruct
 		public void carregarLocal(){
 			EntityManager em = JPAUtil.getEntityManager();
-			LocalCRUD crud = new LocalCRUD(em);
-			listaLocal = crud.listar();
-			listaLocal2 = crud.listar2();
+			LocalDAO dao = new LocalDAO(em);
+			listaLocal = dao.listar();
 			em.close();
 		}
 		
 		public void excluir(){
 			EntityManager em = JPAUtil.getEntityManager();
-			LocalCRUD crud = new LocalCRUD(em);
+			LocalDAO dao = new LocalDAO(em);
 			em.getTransaction().begin();
-			crud.excluir(local);
+			dao.excluir(local);
 			em.getTransaction().commit();
 			em.close();
 			carregarLocal();
@@ -59,12 +52,12 @@ public class LocalMB {
 
 		public void salvar(){
 			EntityManager em = JPAUtil.getEntityManager();
-			LocalCRUD crud = new LocalCRUD(em);
+			LocalDAO dao = new LocalDAO(em);
 			em.getTransaction().begin();
-			if(local.getId()!=null){
-				crud.alterar(local);
+			if(local.getLocalId()!=null){
+				dao.alterar(local);
 			}else{
-				crud.cadastrar(local);
+				dao.cadastrar(local);
 			}
 			em.getTransaction().commit();
 			em.close();

@@ -9,17 +9,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.crud.UsuarioCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
-import br.com.myapp.mod.val.Usuario;
+import br.com.myapp.mod.bean.Usuario;
+import br.com.myapp.mod.dao.UsuarioDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
-@ManagedBean // Anotação que reflete o nome que usaremos para chamar essa classe
-// através da nossa View.
+@ManagedBean
 
-@ViewScoped // Este é o escopo da classe, que diz respeito até quando nosso
-// objeto continuará persistente em memória. Como utilizamos o
-// ViewScoped ele permanecerá até o fechamento da View, ou da
-// página, se assim preferir.
+@ViewScoped
 
 public class UsuarioMB {
 
@@ -39,26 +35,20 @@ public class UsuarioMB {
 		return listaUsuario;
 	}
 
-	@PostConstruct // É importante colocar suas inicializações no post construct
-					// e não no construtor da classe, isso porque se você
-					// estiver realizando injeção de dependência (no Spring, por
-					// exemplo) todas as dependências podem não estar carregadas
-					// na construção da sua classe, então no post construct você
-					// garante que tudo já foi carregado e agora você pode
-					// usá-los.
+	@PostConstruct 
 
 	public void carregarUsuario() {
 		EntityManager em = JPAUtil.getEntityManager();
-		UsuarioCRUD crud = new UsuarioCRUD(em);
-		listaUsuario = crud.listar();
+		UsuarioDAO dao = new UsuarioDAO(em);
+		listaUsuario = dao.listar();
 		em.close();
 	}
 
 	public void excluir() {
 		EntityManager em = JPAUtil.getEntityManager();
-		UsuarioCRUD crud = new UsuarioCRUD(em);
+		UsuarioDAO dao = new UsuarioDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(usuario);
+		dao.excluir(usuario);
 		em.getTransaction().commit();
 		em.close();
 		carregarUsuario();
@@ -67,12 +57,12 @@ public class UsuarioMB {
 	public void salvar() {
 
 		EntityManager em = JPAUtil.getEntityManager();
-		UsuarioCRUD crud = new UsuarioCRUD(em);
+		UsuarioDAO dao = new UsuarioDAO(em);
 		em.getTransaction().begin();
 		if (usuario.getId() != null) {
-			crud.alterar(usuario);
+			dao.alterar(usuario);
 		} else {
-			crud.cadastrar(usuario);
+			dao.cadastrar(usuario);
 		}
 		em.getTransaction().commit();
 		em.close();

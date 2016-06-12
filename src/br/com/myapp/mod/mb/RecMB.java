@@ -6,8 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.myapp.mod.crud.RecCRUD;
-import br.com.myapp.mod.val.Usuario;
+import br.com.myapp.mod.bean.Usuario;
+import br.com.myapp.mod.dao.RecDAO;
 
 @ManagedBean 
 
@@ -15,12 +15,12 @@ import br.com.myapp.mod.val.Usuario;
 
 public class RecMB {
 	
-	private RecCRUD recCRUD = new RecCRUD();
+	private RecDAO recDAO = new RecDAO();
     private Usuario usuario = new Usuario();
     
     public String envia() {
           
-          usuario = recCRUD.getUsuario(usuario.getNome(), usuario.getEmail());
+          usuario = recDAO.getUsuario(usuario.getNome(), usuario.getEmail());
           if (usuario == null) {
                 usuario = new Usuario();
                 FacesContext.getCurrentInstance().addMessage(

@@ -58,12 +58,12 @@
 					<legend>Dados do Item</legend>
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
-							rendered="#{itemMB.item.id != null}" />
-						<h:inputText id="id" value="#{itemMB.item.id}"
-							rendered="#{itemMB.item.id != null}" readonly="true" />
+							rendered="#{itemMB.item.itemId != null}" />
+						<h:inputText id="id" value="#{itemMB.item.itemId}"
+							rendered="#{itemMB.item.itemId != null}" readonly="true" />
 
 						<h:outputLabel value="Nome:" for="item" />
-						<h:inputText id="item" value="#{itemMB.item.nome}" />
+						<h:inputText id="item" value="#{itemMB.item.itemNome}" />
 						<h:outputLabel value="Descrição Simples:" for="descricaoSimples" />
 						<p:inputTextarea rows="3" cols="20" id="descricaoSimples"
 							value="#{itemMB.item.descricaoSimples}" />
@@ -71,7 +71,9 @@
 						<p:inputTextarea rows="6" cols="20" id="descricaoCompleta"
 							value="#{itemMB.item.descricaoCompleta}" />
 						<h:outputLabel value="Preço:" for="preco" />
-						<h:inputText id="preco" value="#{itemMB.item.preco}" />
+						<h:inputText id="preco" value="#{itemMB.item.itemPreco}" />
+						<h:outputLabel value="Cardapio:" for="cardapio" />
+						<h:inputText id="cardapio" value="#{itemMB.item.cardapio.cardapioId}" />
 						<h:commandButton value="Salvar" action="#{itemMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -88,7 +90,7 @@
 						<f:facet name="header">
 							<h:outputText value="Nome" />
 						</f:facet>
-					#{item.nome}
+					#{item.itemNome}
 				</h:column>
 
 					<h:column>
@@ -109,10 +111,17 @@
 						<f:facet name="header">
 							<h:outputText value="Preço" />
 						</f:facet>
-						<h:outputText value="#{item.preco}">
+						<h:outputText value="#{item.itemPreco}">
 							<f:convertNumber pattern="R$ #0.00" />
 						</h:outputText>
 					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Cardapio" />
+						</f:facet>
+					#{item.cardapio.cardapioTitulo}
+				</h:column>
 
 					<h:column>
 						<h:commandLink action="#{itemMB.excluir}" value="Remover">

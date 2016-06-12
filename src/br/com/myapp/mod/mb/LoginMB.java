@@ -5,8 +5,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.myapp.mod.crud.LoginCRUD;
-import br.com.myapp.mod.val.Usuario;
+import br.com.myapp.mod.bean.Usuario;
+import br.com.myapp.mod.dao.LoginDAO;
 
 @ManagedBean 
 
@@ -14,12 +14,12 @@ import br.com.myapp.mod.val.Usuario;
 
 public class LoginMB {
 	
-	private LoginCRUD loginCRUD = new LoginCRUD();
+	private LoginDAO loginDAO = new LoginDAO();
     private Usuario usuario = new Usuario();
     
     public String envia() {
           
-          usuario = loginCRUD.getUsuario(usuario.getNome(), usuario.getSenha());
+          usuario = loginDAO.getUsuario(usuario.getNome(), usuario.getSenha());
           if (usuario == null) {
                 usuario = new Usuario();
                 FacesContext.getCurrentInstance().addMessage(

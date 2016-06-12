@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.val.Categoria;
-import br.com.myapp.mod.crud.CategoriaCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Categoria;
+import br.com.myapp.mod.dao.CategoriaDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
@@ -30,26 +30,20 @@ private Categoria categoria = new Categoria();
 		return listaCategoria;
 	}
 	
-	public List<Categoria> listaCategoria2 = new ArrayList<Categoria>();
-	
-	public List<Categoria> getListaCategoria2(){
-		return listaCategoria2;
-	}
 	
 	@PostConstruct
 	public void carregarCategoria(){
 		EntityManager em = JPAUtil.getEntityManager();
-		CategoriaCRUD crud = new CategoriaCRUD(em);
-		listaCategoria = crud.listar();
-		listaCategoria2 = crud.listar2();
+		CategoriaDAO dao = new CategoriaDAO(em);
+		listaCategoria = dao.listar();
 		em.close();
 	}
 	
 	public void excluir(){
 		EntityManager em = JPAUtil.getEntityManager();
-		CategoriaCRUD crud = new CategoriaCRUD(em);
+		CategoriaDAO dao = new CategoriaDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(categoria);
+		dao.excluir(categoria);
 		em.getTransaction().commit();
 		em.close();
 		carregarCategoria();
@@ -58,12 +52,12 @@ private Categoria categoria = new Categoria();
 	public void salvar(){
 		
 		EntityManager em = JPAUtil.getEntityManager();
-		CategoriaCRUD crud = new CategoriaCRUD(em);
+		CategoriaDAO dao = new CategoriaDAO(em);
 		em.getTransaction().begin();
-		if(categoria.getId()!=null){
-			crud.alterar(categoria);
+		if(categoria.getCategoriaId()!=null){
+			dao.alterar(categoria);
 		}else{
-			crud.cadastrar(categoria);
+			dao.cadastrar(categoria);
 		}
 		em.getTransaction().commit();
 		em.close();

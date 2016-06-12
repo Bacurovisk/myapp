@@ -7,9 +7,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
-import br.com.myapp.mod.crud.EntregasCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
-import br.com.myapp.mod.val.Entregas;
+
+import br.com.myapp.mod.bean.Entregas;
+import br.com.myapp.mod.dao.EntregasDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
 @ManagedBean 
 @ViewScoped 
@@ -33,16 +34,16 @@ public class EntregasMB {
 	@PostConstruct
 	public void carregarEntregas() {
 		EntityManager em = JPAUtil.getEntityManager();
-		EntregasCRUD crud = new EntregasCRUD(em);
-		listaEntregas = crud.listar();
+		EntregasDAO dao = new EntregasDAO(em);
+		listaEntregas = dao.listar();
 		em.close();
 	}
 
 	public void excluir() {
 		EntityManager em = JPAUtil.getEntityManager();
-		EntregasCRUD crud = new EntregasCRUD(em);
+		EntregasDAO dao = new EntregasDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(entregas);
+		dao.excluir(entregas);
 		em.getTransaction().commit();
 		em.close();
 		carregarEntregas();
@@ -51,13 +52,13 @@ public class EntregasMB {
 	public void salvar() {
 
 		EntityManager em = JPAUtil.getEntityManager();
-		EntregasCRUD crud = new EntregasCRUD(em);
+		EntregasDAO dao = new EntregasDAO(em);
 		em.getTransaction().begin();
 		
 		if (entregas.getId() != null) {
-			crud.alterar(entregas);
+			dao.alterar(entregas);
 		} else {
-			crud.cadastrar(entregas);
+			dao.cadastrar(entregas);
 		}
 		em.getTransaction().commit();
 		em.close();

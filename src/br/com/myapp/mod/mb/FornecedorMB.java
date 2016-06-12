@@ -8,9 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.val.Fornecedor;
-import br.com.myapp.mod.crud.FornecedorCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Fornecedor;
+import br.com.myapp.mod.dao.FornecedorDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
@@ -35,16 +35,16 @@ public class FornecedorMB {
 		@PostConstruct
 		public void carregarFornecedor(){
 			EntityManager em = JPAUtil.getEntityManager();
-			FornecedorCRUD crud = new FornecedorCRUD(em);
-			listaFornecedor = crud.listar();
+			FornecedorDAO dao = new FornecedorDAO(em);
+			listaFornecedor = dao.listar();
 			em.close();
 		}
 		
 		public void excluir(){
 			EntityManager em = JPAUtil.getEntityManager();
-			FornecedorCRUD crud = new FornecedorCRUD(em);
+			FornecedorDAO dao = new FornecedorDAO(em);
 			em.getTransaction().begin();
-			crud.excluir(fornecedor);
+			dao.excluir(fornecedor);
 			em.getTransaction().commit();
 			em.close();
 			carregarFornecedor();
@@ -52,12 +52,12 @@ public class FornecedorMB {
 
 		public void salvar(){
 			EntityManager em = JPAUtil.getEntityManager();
-			FornecedorCRUD crud = new FornecedorCRUD(em);
+			FornecedorDAO dao = new FornecedorDAO(em);
 			em.getTransaction().begin();
-			if(fornecedor.getId()!=null){
-				crud.alterar(fornecedor);
+			if(fornecedor.getFornecedorId()!=null){
+				dao.alterar(fornecedor);
 			}else{
-				crud.cadastrar(fornecedor);
+				dao.cadastrar(fornecedor);
 			}
 			em.getTransaction().commit();
 			em.close();

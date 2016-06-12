@@ -59,13 +59,13 @@
 					<legend>Dados do Fornecedor</legend>
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
-							rendered="#{fornecedorMB.fornecedor.id != null}" />
-						<h:inputText id="id" value="#{fornecedorMB.fornecedor.id}"
-							rendered="#{fornecedorMB.fornecedor.id != null}" readonly="true" />
+							rendered="#{fornecedorMB.fornecedor.fornecedorId != null}" />
+						<h:inputText id="id" value="#{fornecedorMB.fornecedor.fornecedorId}"
+							rendered="#{fornecedorMB.fornecedor.fornecedorId != null}" readonly="true" />
 						<h:outputLabel value="Formecedor:" for="nome" />
-						<h:inputText id="nome" value="#{fornecedorMB.fornecedor.nome}" />
+						<h:inputText id="nome" value="#{fornecedorMB.fornecedor.fornecedorNome}" />
 						<h:outputLabel value="Produto Fornecido:" for="produto" />
-						<h:inputText id="produto" value="#{fornecedorMB.fornecedor.produto}" />
+						<h:inputText id="produto" value="#{fornecedorMB.fornecedor.fornecedorProduto}" />
 						<h:commandButton value="Salvar" action="#{fornecedorMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -82,7 +82,7 @@
 						<f:facet name="header">
 							<h:outputText value="Fornecedor" />
 						</f:facet>
-					#{fornecedor.nome}
+					#{fornecedor.fornecedorNome}
 				</h:column>
 
 
@@ -90,7 +90,7 @@
 						<f:facet name="header">
 							<h:outputText value="Produto Fornecido" />
 						</f:facet>
-					#{fornecedor.produto}
+					#{fornecedor.fornecedorProduto}
 				</h:column>
 
 					<h:column>

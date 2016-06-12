@@ -8,10 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-
-import br.com.myapp.mod.val.Mobile;
-import br.com.myapp.mod.crud.MobileCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Mobile;
+import br.com.myapp.mod.dao.MobileDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
 @ManagedBean
 
@@ -39,16 +38,16 @@ public class MobileMB {
 	
 	public void carregarMobile() {
 		EntityManager em = JPAUtil.getEntityManager();
-		MobileCRUD crud = new MobileCRUD(em);
-		listaMobile = crud.listar();
+		MobileDAO dao = new MobileDAO(em);
+		listaMobile = dao.listar();
 		em.close();
 	}
 
 	public void excluir() {
 		EntityManager em = JPAUtil.getEntityManager();
-		MobileCRUD crud = new MobileCRUD(em);
+		MobileDAO dao = new MobileDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(mobile);
+		dao.excluir(mobile);
 		em.getTransaction().commit();
 		em.close();
 		carregarMobile();
@@ -57,12 +56,12 @@ public class MobileMB {
 	public void salvar() {
 
 		EntityManager em = JPAUtil.getEntityManager();
-		MobileCRUD crud = new MobileCRUD(em);
+		MobileDAO dao = new MobileDAO(em);
 		em.getTransaction().begin();
 		if (mobile.getId() != null) {
-			crud.alterar(mobile);
+			dao.alterar(mobile);
 		} else {
-			crud.cadastrar(mobile);
+			dao.cadastrar(mobile);
 		}
 		em.getTransaction().commit();
 		em.close();

@@ -8,17 +8,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.val.Compras;
-import br.com.myapp.mod.crud.ComprasCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Compras;
+import br.com.myapp.mod.dao.ComprasDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
-@ManagedBean // Anotação que reflete o nome que usaremos para chamar essa classe
-				// através da nossa View.
+@ManagedBean
 
-@ViewScoped // Este é o escopo da classe, que diz respeito até quando nosso
-			// objeto continuará persistente em memória. Como utilizamos o
-			// ViewScoped ele permanecerá até o fechamento da View, ou da
-			// página, se assim preferir.
+@ViewScoped 
 
 public class ComprasMB {
 
@@ -38,26 +34,20 @@ public class ComprasMB {
 		return listaCompras;
 	}
 
-	@PostConstruct // É importante colocar suas inicializações no post construct
-					// e não no construtor da classe, isso porque se você
-					// estiver realizando injeção de dependência (no Spring, por
-					// exemplo) todas as dependências podem não estar carregadas
-					// na construção da sua classe, então no post construct você
-					// garante que tudo já foi carregado e agora você pode
-					// usá-los.
+	@PostConstruct 
 	
 	public void carregarCompras() {
 		EntityManager em = JPAUtil.getEntityManager();
-		ComprasCRUD crud = new ComprasCRUD(em);
-		listaCompras = crud.listar();
+		ComprasDAO dao = new ComprasDAO(em);
+		listaCompras = dao.listar();
 		em.close();
 	}
 
 	public void excluir() {
 		EntityManager em = JPAUtil.getEntityManager();
-		ComprasCRUD crud = new ComprasCRUD(em);
+		ComprasDAO dao = new ComprasDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(compras);
+		dao.excluir(compras);
 		em.getTransaction().commit();
 		em.close();
 		carregarCompras();
@@ -66,12 +56,12 @@ public class ComprasMB {
 	public void salvar() {
 
 		EntityManager em = JPAUtil.getEntityManager();
-		ComprasCRUD crud = new ComprasCRUD(em);
+		ComprasDAO dao = new ComprasDAO(em);
 		em.getTransaction().begin();
-		if (compras.getId() != null) {
-			crud.alterar(compras);
+		if (compras.getCompraId() != null) {
+			dao.alterar(compras);
 		} else {
-			crud.cadastrar(compras);
+			dao.cadastrar(compras);
 		}
 		em.getTransaction().commit();
 		em.close();

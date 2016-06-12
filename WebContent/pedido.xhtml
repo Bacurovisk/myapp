@@ -58,25 +58,21 @@
 					<legend>Dados do Pedido</legend>
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
-							rendered="#{pedidoMB.pedido.id != null}" />
-						<h:inputText id="id" value="#{pedidoMB.pedido.id}"
-							rendered="#{pedidoMB.pedido.id != null}" readonly="true" />
-
-
+							rendered="#{pedidoMB.pedido.pedidoId != null}" />
+						<h:inputText id="id" value="#{pedidoMB.pedido.pedidoId}"
+							rendered="#{pedidoMB.pedido.pedidoId != null}" readonly="true" />
 						<h:outputLabel value="Prato:" for="nomeprato" />
-						<h:inputText id="nomeprato" value="#{pedidoMB.pedido.nomeprato}" />
+						<h:inputText id="nomeprato" value="#{pedidoMB.pedido.nomePrato}" />
 						<h:outputLabel value="Quantidade:" for="quantidade" />
-						<h:inputText id="quantidade" value="#{pedidoMB.pedido.quantidade}" />
+						<h:inputText id="quantidade" value="#{pedidoMB.pedido.qtdPedido}" />
 						<h:outputLabel value="Preço:" for="totalvalor" />
-						<h:inputText id="totalvalor" value="#{pedidoMB.pedido.totalvalor}" />
-						<h:outputLabel value="Pagamento/Troco:" for="formapagamento" />
+						<h:inputText id="totalvalor" value="#{pedidoMB.pedido.totalValor}" />
+						<h:outputLabel value="Metodo Pagamento:" for="formapagamento" />
 						<h:inputText id="formapagamento"
-							value="#{pedidoMB.pedido.formapagamento}" />
-						<p:outputLabel for="local" value="Local de Entrega: " />
-						<p:selectOneMenu id="local" value="#{pedidoMB.pedido.localentrega}">
-							<f:selectItem itemLabel="Selecione um" itemValue="" />
-							<f:selectItems value="#{localMB.listaLocal2}" />
-						</p:selectOneMenu>
+							value="#{pedidoMB.pedido.cartao.cartaoId}" />
+						<h:outputLabel value="Local de Entrega:" for="local" />
+						<h:inputText id="local"
+							value="#{pedidoMB.pedido.local.localId}" />
 						<h:commandButton action="#{pedidoMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -94,7 +90,7 @@
 						<f:facet name="header">
 							<h:outputText value="Prato" />
 						</f:facet>
-					#{pedido.nomeprato}
+					#{pedido.nomePrato}
 				</h:column>
 
 
@@ -102,32 +98,46 @@
 						<f:facet name="header">
 							<h:outputText value="Quantidade" />
 						</f:facet>
-					#{pedido.quantidade}
+					#{pedido.qtdPedido}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Valor" />
 						</f:facet>
-					#{pedido.totalvalor}
+					#{pedido.totalValor}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Pagamento/Troco" />
 						</f:facet>
-					#{pedido.formapagamento}
+					#{pedido.cartao.cartaoNome}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Local de Entrega" />
 						</f:facet>
-					#{pedido.localentrega}
+					#{pedido.local.localNome}
 				</h:column>
+				
+				<h:column>
+						<h:commandLink action="#{pedidoMB.excluir}" value="Remover">
+							<f:ajax render="@form" />
+							<f:setPropertyActionListener target="#{pedidoMB.pedido}"
+								value="#{pedido}" />
+						</h:commandLink>
+					</h:column>
 
-					<!-- Alterar e Excluir -->
-
+					<h:column>
+						<h:commandLink value="Alterar">
+							<f:ajax render="@form :dados" />
+							<f:setPropertyActionListener target="#{pedidoMB.pedido}"
+								value="#{pedido}" />
+						</h:commandLink>
+					</h:column>
+				
 				</h:dataTable>
 			</h:form>
 		</div>

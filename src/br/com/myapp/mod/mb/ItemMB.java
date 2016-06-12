@@ -8,9 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.val.Item;
-import br.com.myapp.mod.crud.ItemCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Item;
+import br.com.myapp.mod.dao.ItemDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
@@ -35,16 +35,16 @@ private Item item;
 	@PostConstruct
 	public void carregarItem(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ItemCRUD crud = new ItemCRUD(em);
-		listaItem = crud.listar();
+		ItemDAO dao = new ItemDAO(em);
+		listaItem = dao.listar();
 		em.close();
 	}
 	
 	public void excluir(){
 		EntityManager em = JPAUtil.getEntityManager();
-		ItemCRUD crud = new ItemCRUD(em);
+		ItemDAO dao = new ItemDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(item);
+		dao.excluir(item);
 		em.getTransaction().commit();
 		em.close();
 		carregarItem();
@@ -53,12 +53,12 @@ private Item item;
 	public void salvar(){
 		
 		EntityManager em = JPAUtil.getEntityManager();
-		ItemCRUD crud = new ItemCRUD(em);
+		ItemDAO dao = new ItemDAO(em);
 		em.getTransaction().begin();
-		if(item.getId()!=null){
-			crud.alterar(item);
+		if(item.getItemId()!=null){
+			dao.alterar(item);
 		}else{
-			crud.cadastrar(item);
+			dao.cadastrar(item);
 		}
 		em.getTransaction().commit();
 		em.close();

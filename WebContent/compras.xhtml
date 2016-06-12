@@ -58,22 +58,22 @@
 					<legend>Dados do Produto</legend>
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
-							rendered="#{comprasMB.compras.id != null}" />
-						<h:inputText id="id" value="#{comprasMB.compras.id}"
-							rendered="#{comprasMB.compras.id != null}" readonly="true" />
+							rendered="#{comprasMB.compras.compraId != null}" />
+						<h:inputText id="id" value="#{comprasMB.compras.compraId}"
+							rendered="#{comprasMB.compras.compraId != null}" readonly="true" />
 
 						<h:outputLabel value="Produto:" for="nome" />
-						<h:inputText id="nome" value="#{comprasMB.compras.nome}" />
+						<h:inputText id="nome" value="#{comprasMB.compras.fornecedor.fornecedorId}" />
 
 						<h:outputLabel value="Descrição:" for="descricao" />
-						<h:inputText id="descricao" value="#{comprasMB.compras.descricao}" />
+						<h:inputText id="descricao" value="#{comprasMB.compras.descCompra}" />
 
 						<h:outputLabel value="Quantidade:" for="quantidade" />
 						<h:inputText id="quantidade"
-							value="#{comprasMB.compras.quantidade}" />
+							value="#{comprasMB.compras.qtdCompra}" />
 
 						<h:outputLabel value="Preço:" for="preco" />
-						<h:inputText id="preco" value="#{comprasMB.compras.preco}" />
+						<h:inputText id="preco" value="#{comprasMB.compras.totalCompra}" />
 
 						<h:commandButton action="#{comprasMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
@@ -91,7 +91,7 @@
 						<f:facet name="header">
 							<h:outputText value="Nome" />
 						</f:facet>
-					#{compras.nome}
+					#{compras.fornecedor.fornecedorProduto}
 				</h:column>
 
 
@@ -99,14 +99,14 @@
 						<f:facet name="header">
 							<h:outputText value="Descrição" />
 						</f:facet>
-					#{compras.descricao}
+					#{compras.descCompra}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Quantidade" />
 						</f:facet>
-					#{compras.quantidade}
+					#{compras.qtdCompra}
 				</h:column>
 
 
@@ -114,7 +114,7 @@
 						<f:facet name="header">
 							<h:outputText value="Preço" />
 						</f:facet>
-						<h:outputText value="#{compras.preco}">
+						<h:outputText value="#{compras.totalCompra}">
 							<f:convertNumber pattern="R$ #0.00" />
 						</h:outputText>
 					</h:column>

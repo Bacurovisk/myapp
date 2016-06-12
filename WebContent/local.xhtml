@@ -58,13 +58,13 @@
 					<legend>Dados do Local</legend>
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
-							rendered="#{localMB.local.id != null}" />
-						<h:inputText id="id" value="#{localMB.local.id}"
-							rendered="#{localMB.local.id != null}" readonly="true" />
+							rendered="#{localMB.local.localId != null}" />
+						<h:inputText id="id" value="#{localMB.local.localId}"
+							rendered="#{localMB.local.localId != null}" readonly="true" />
 						<h:outputLabel value="Bairro:" for="nome" />
-						<h:inputText id="nome" value="#{localMB.local.nome}" />
+						<h:inputText id="nome" value="#{localMB.local.localNome}" />
 						<h:outputLabel value="Taxa de Entrega:" for="taxa" />
-						<h:inputText id="taxa" value="#{localMB.local.taxa}" />
+						<h:inputText id="taxa" value="#{localMB.local.localTaxa}" />
 						<h:commandButton value="Salvar" action="#{localMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -81,14 +81,14 @@
 						<f:facet name="header">
 							<h:outputText value="Bairro" />
 						</f:facet>
-					#{local.nome}
+					#{local.localNome}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Taxa de Entrega" />
 						</f:facet>
-						<h:outputText value="#{local.taxa}">
+						<h:outputText value="#{local.localTaxa}">
 							<f:convertNumber pattern="R$ #0.00" />
 						</h:outputText>
 					</h:column>

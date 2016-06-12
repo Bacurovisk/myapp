@@ -8,17 +8,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.val.Cartao;
-import br.com.myapp.mod.crud.CartaoCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Cartao;
+import br.com.myapp.mod.dao.CartaoDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
-@ManagedBean // Anotação que reflete o nome que usaremos para chamar essa classe
-				// através da nossa View.
+@ManagedBean 
 
-@ViewScoped // Este é o escopo da classe, que diz respeito até quando nosso
-			// objeto continuará persistente em memória. Como utilizamos o
-			// ViewScoped ele permanecerá até o fechamento da View, ou da
-			// página, se assim preferir.
+@ViewScoped 
 
 public class CartaoMB {
 
@@ -37,33 +33,21 @@ public class CartaoMB {
 	public List<Cartao> getListaCartao() {
 		return listaCartao;
 	}
-	public List<Cartao> listaCartao2 = new ArrayList<Cartao>();
 
-	public List<Cartao> getListaCartao2() {
-		return listaCartao2;
-	}
-
-	@PostConstruct // É importante colocar suas inicializações no post construct
-					// e não no construtor da classe, isso porque se você
-					// estiver realizando injeção de dependência (no Spring, por
-					// exemplo) todas as dependências podem não estar carregadas
-					// na construção da sua classe, então no post construct você
-					// garante que tudo já foi carregado e agora você pode
-					// usá-los.
+	@PostConstruct
 	
 	public void carregarCartao() {
 		EntityManager em = JPAUtil.getEntityManager();
-		CartaoCRUD crud = new CartaoCRUD(em);
-		listaCartao = crud.listar();
-		listaCartao2 = crud.listar2();
+		CartaoDAO dao = new CartaoDAO(em);
+		listaCartao = dao.listar();
 		em.close();
 	}
 
 	public void excluir() {
 		EntityManager em = JPAUtil.getEntityManager();
-		CartaoCRUD crud = new CartaoCRUD(em);
+		CartaoDAO dao = new CartaoDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(cartao);
+		dao.excluir(cartao);
 		em.getTransaction().commit();
 		em.close();
 		carregarCartao();
@@ -72,12 +56,12 @@ public class CartaoMB {
 	public void salvar() {
 
 		EntityManager em = JPAUtil.getEntityManager();
-		CartaoCRUD crud = new CartaoCRUD(em);
+		CartaoDAO dao = new CartaoDAO(em);
 		em.getTransaction().begin();
-		if (cartao.getId() != null) {
-			crud.alterar(cartao);
+		if (cartao.getCartaoId() != null) {
+			dao.alterar(cartao);
 		} else {
-			crud.cadastrar(cartao);
+			dao.cadastrar(cartao);
 		}
 		em.getTransaction().commit();
 		em.close();

@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
-import br.com.myapp.mod.val.Cardapio;
-import br.com.myapp.mod.crud.CardapioCRUD;
-import br.com.myapp.mod.pers.JPAUtil;
+import br.com.myapp.mod.bean.Cardapio;
+import br.com.myapp.mod.dao.CardapioDAO;
+import br.com.myapp.mod.util.JPAUtil;
 
 @ViewScoped
 @ManagedBean
@@ -33,16 +33,16 @@ private Cardapio cardapio = new Cardapio();
 	@PostConstruct
 	public void carregarCardapio(){
 		EntityManager em = JPAUtil.getEntityManager();
-		CardapioCRUD crud = new CardapioCRUD(em);
-		listaCardapio = crud.listar();
+		CardapioDAO dao = new CardapioDAO(em);
+		listaCardapio = dao.listar();
 		em.close();
 	}
 	
 	public void excluir(){
 		EntityManager em = JPAUtil.getEntityManager();
-		CardapioCRUD crud = new CardapioCRUD(em);
+		CardapioDAO dao = new CardapioDAO(em);
 		em.getTransaction().begin();
-		crud.excluir(cardapio);
+		dao.excluir(cardapio);
 		em.getTransaction().commit();
 		em.close();
 		carregarCardapio();
@@ -51,12 +51,12 @@ private Cardapio cardapio = new Cardapio();
 	public void salvar(){
 		
 		EntityManager em = JPAUtil.getEntityManager();
-		CardapioCRUD crud = new CardapioCRUD(em);
+		CardapioDAO dao = new CardapioDAO(em);
 		em.getTransaction().begin();
-		if(cardapio.getId()!=null){
-			crud.alterar(cardapio);
+		if(cardapio.getCardapioId()!=null){
+			dao.alterar(cardapio);
 		}else{
-			crud.cadastrar(cardapio);
+			dao.cadastrar(cardapio);
 		}
 		em.getTransaction().commit();
 		em.close();
