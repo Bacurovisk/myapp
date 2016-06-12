@@ -1,4 +1,4 @@
-package br.com.myapp.mod.pers;
+package br.com.myapp.mod.util;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

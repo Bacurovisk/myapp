@@ -1,17 +1,17 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Local;
+import br.com.myapp.mod.bean.Local;
 
 @SuppressWarnings("unchecked")
 
-public class LocalCRUD {
+public class LocalDAO {
 	private EntityManager entityManager;
 
-	public LocalCRUD(EntityManager entityManager) {
+	public LocalDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void cadastrar(Local local){
@@ -29,14 +29,9 @@ public class LocalCRUD {
 	}
 	
 	public List<Local> listar(){
-		String jpql = "Select l from Local l order by l.nome";
+		String jpql = "Select l from Local l order by l.localId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
 	
-	public List<Local> listar2(){
-		String jpql = "Select l.nome from Local l order by l.nome";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
 }

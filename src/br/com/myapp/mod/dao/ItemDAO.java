@@ -1,18 +1,18 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Item;
+import br.com.myapp.mod.bean.Item;
 
 @SuppressWarnings("unchecked")
-public class ItemCRUD {
+public class ItemDAO {
 	
 	private EntityManager entityManager;
 
-	public ItemCRUD(EntityManager entityManager) {
+	public ItemDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void cadastrar(Item item){
@@ -30,7 +30,7 @@ public class ItemCRUD {
 	}
 	
 	public List<Item> listar(){
-		String jpql = "Select c from Item c order by c.nome";
+		String jpql = "Select c from Item c order by c.itemId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

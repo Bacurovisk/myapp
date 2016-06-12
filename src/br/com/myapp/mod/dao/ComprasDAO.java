@@ -1,16 +1,16 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Compras;
+import br.com.myapp.mod.bean.Compras;
 @SuppressWarnings("unchecked")
-public class ComprasCRUD {
+public class ComprasDAO {
 	private EntityManager entityManager;
 
-	public ComprasCRUD(EntityManager entityManager) {
+	public ComprasDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void cadastrar(Compras compras){
@@ -28,7 +28,7 @@ public class ComprasCRUD {
 	}
 	
 	public List<Compras> listar(){
-		String jpql = "Select cp from Compras cp order by cp.nome";
+		String jpql = "Select cp from Compras cp order by cp.compraId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

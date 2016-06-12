@@ -1,17 +1,18 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import br.com.myapp.mod.val.Entregas;
+
+import br.com.myapp.mod.bean.Entregas;
 
 @SuppressWarnings("unchecked")
 
-public class EntregasCRUD {
+public class EntregasDAO {
 	private EntityManager entityManager;
 
-	public EntregasCRUD(EntityManager entityManager) {
+	public EntregasDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	
@@ -36,7 +37,7 @@ public class EntregasCRUD {
 	public List<Entregas> listar(){
 		
 		//String jpql = "from Entregas e, Pedido p"; // 	Quando faz o n=inner join ele não mostra os campos
-		String jpql = "Select e from Entregas e order by e.nome";
+		String jpql = "Select e from Entregas e order by e.id";
 		//String jpql = "select e from Entregas e inner join e.localentrega order by e.nome";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();

@@ -1,4 +1,4 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 
 
@@ -7,9 +7,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
-import br.com.myapp.mod.val.Usuario;
+import br.com.myapp.mod.bean.Usuario;
 
-public class RecCRUD {
+public class RecDAO {
 	
 	private EntityManagerFactory factory = Persistence
             .createEntityManagerFactory("default");

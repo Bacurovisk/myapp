@@ -1,17 +1,17 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Fornecedor;
+import br.com.myapp.mod.bean.Fornecedor;
 
 @SuppressWarnings("unchecked")
 
-public class FornecedorCRUD {
+public class FornecedorDAO {
 	private EntityManager entityManager;
 
-	public FornecedorCRUD(EntityManager entityManager) {
+	public FornecedorDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void cadastrar(Fornecedor fornecedor){
@@ -29,7 +29,7 @@ public class FornecedorCRUD {
 	}
 	
 	public List<Fornecedor> listar(){
-		String jpql = "Select f from Fornecedor f order by f.nome";
+		String jpql = "Select f from Fornecedor f order by f.fornecedorId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

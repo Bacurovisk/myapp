@@ -1,16 +1,16 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Cardapio;
+import br.com.myapp.mod.bean.Cardapio;
 
 @SuppressWarnings("unchecked")
-public class CardapioCRUD {
+public class CardapioDAO {
 	private EntityManager entityManager;
 
-	public CardapioCRUD(EntityManager entityManager) {
+	public CardapioDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void cadastrar(Cardapio cardapio){
@@ -28,7 +28,7 @@ public class CardapioCRUD {
 	}
 	
 	public List<Cardapio> listar(){
-		String jpql = "Select c from Cardapio c order by c.nome";
+		String jpql = "Select c from Cardapio c order by c.cardapioId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

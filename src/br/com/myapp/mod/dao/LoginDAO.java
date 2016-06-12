@@ -1,13 +1,13 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
-import br.com.myapp.mod.val.Usuario;
+import br.com.myapp.mod.bean.Usuario;
 
-public class LoginCRUD {
+public class LoginDAO {
 	
 	private EntityManagerFactory factory = Persistence
             .createEntityManagerFactory("default");

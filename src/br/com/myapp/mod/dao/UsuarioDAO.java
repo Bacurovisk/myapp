@@ -1,16 +1,17 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import br.com.myapp.mod.val.Usuario;
+
+import br.com.myapp.mod.bean.Usuario;
 
 @SuppressWarnings("unchecked")
-public class UsuarioCRUD {
+public class UsuarioDAO {
 
 	private EntityManager entityManager;
 
-	public UsuarioCRUD(EntityManager entityManager) {
+	public UsuarioDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 

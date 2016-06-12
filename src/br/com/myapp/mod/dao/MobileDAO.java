@@ -1,16 +1,16 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Mobile;
-
-public class MobileCRUD {
+import br.com.myapp.mod.bean.Mobile;
+@SuppressWarnings("unchecked")
+public class MobileDAO {
 	private EntityManager entityManager;
 
-	public MobileCRUD(EntityManager entityManager) {
+	public MobileDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 
@@ -30,9 +30,9 @@ public class MobileCRUD {
 		return entityManager.getReference(Mobile.class, id);
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	public List<Mobile> listar() {
-		String jpql = "Select m from Mobile m order by m.nome";
+		String jpql = "Select m from Mobile m order by m.id";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

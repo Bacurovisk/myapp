@@ -1,16 +1,16 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Cartao;
+import br.com.myapp.mod.bean.Cartao;
 @SuppressWarnings("unchecked")
-public class CartaoCRUD {
+public class CartaoDAO {
 	private EntityManager entityManager;
 
-	public CartaoCRUD(EntityManager entityManager) {
+	public CartaoDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void cadastrar(Cartao cartao){
@@ -28,12 +28,7 @@ public class CartaoCRUD {
 	}
 	
 	public List<Cartao> listar(){
-		String jpql = "Select c from Cartao c order by c.nome";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-	public List<Cartao> listar2(){
-		String jpql = "Select c.nome from Cartao c order by c.nome";
+		String jpql = "Select c from Cartao c order by c.cartaoId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

@@ -1,15 +1,16 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import br.com.myapp.mod.val.Pedido;
+
+import br.com.myapp.mod.bean.Pedido;
 
 @SuppressWarnings("unchecked")
-public class PedidoCRUD {
+public class PedidoDAO {
 	private EntityManager entityManager;
 
-	public PedidoCRUD(EntityManager entityManager) {
+	public PedidoDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 
@@ -31,7 +32,7 @@ public class PedidoCRUD {
 
 	
 	public List<Pedido> listar() {
-		String jpql = "Select p from Pedido p order by p.nomeprato";
+		String jpql = "Select p from Pedido p order by p.pedidoId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}

@@ -1,4 +1,4 @@
-package br.com.myapp.mod.val;
+package br.com.myapp.mod.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

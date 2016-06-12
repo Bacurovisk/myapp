@@ -1,16 +1,16 @@
-package br.com.myapp.mod.crud;
+package br.com.myapp.mod.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.myapp.mod.val.Categoria;
+import br.com.myapp.mod.bean.Categoria;
 
 @SuppressWarnings("unchecked")
-public class CategoriaCRUD {
+public class CategoriaDAO {
 	private EntityManager entityManager;
 
-	public CategoriaCRUD(EntityManager entityManager) {
+	public CategoriaDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void cadastrar(Categoria categoria){
@@ -28,15 +28,10 @@ public class CategoriaCRUD {
 	}
 	
 	public List<Categoria> listar(){
-		String jpql = "Select c from Categoria c order by c.nome";
+		String jpql = "Select c from Categoria c order by c.categoriaId";
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
-	
-	public List<Categoria> listar2(){
-		String jpql = "Select c.nome from Categoria c order by c.nome";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
+
 
 }
