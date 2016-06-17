@@ -45,7 +45,7 @@ public class CartaoMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		CartaoDAO dao = new CartaoDAO(em);
 		listaCartao = dao.listar();
-		listaCartao = dao.listar2();
+		listaCartao2 = dao.listar2();
 		em.close();
 	}
 

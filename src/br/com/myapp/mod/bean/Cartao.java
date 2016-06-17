@@ -60,4 +60,5 @@ public class Cartao {
 	public void setPedido(List<Pedido> pedido) {
 		this.pedido = pedido;
 	}
+	
 }

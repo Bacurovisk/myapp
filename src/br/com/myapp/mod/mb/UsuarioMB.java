@@ -34,6 +34,11 @@ public class UsuarioMB {
 	public List<Usuario> getListaUsuario() {
 		return listaUsuario;
 	}
+	public List<Usuario> listaUsuario2 = new ArrayList<Usuario>();
+
+	public List<Usuario> getListaUsuario2() {
+		return listaUsuario2;
+	}
 
 	@PostConstruct 
 
@@ -41,7 +46,7 @@ public class UsuarioMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		UsuarioDAO dao = new UsuarioDAO(em);
 		listaUsuario = dao.listar();
-		listaUsuario = dao.listar2();
+		listaUsuario2 = dao.listar2();
 		em.close();
 	}
 
