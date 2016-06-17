@@ -64,16 +64,22 @@
 
 						<h:outputLabel value="Nome:" for="item" />
 						<h:inputText id="item" value="#{itemMB.item.itemNome}" />
+
 						<h:outputLabel value="Descrição Simples:" for="descricaoSimples" />
 						<p:inputTextarea rows="3" cols="20" id="descricaoSimples"
 							value="#{itemMB.item.descricaoSimples}" />
+
 						<h:outputLabel value="Descrição Completa:" for="descricaoCompleta" />
 						<p:inputTextarea rows="6" cols="20" id="descricaoCompleta"
 							value="#{itemMB.item.descricaoCompleta}" />
+
 						<h:outputLabel value="Preço:" for="preco" />
 						<h:inputText id="preco" value="#{itemMB.item.itemPreco}" />
+
 						<h:outputLabel value="Cardapio:" for="cardapio" />
-						<h:inputText id="cardapio" value="#{itemMB.item.cardapio.cardapioId}" />
+						<h:inputText id="cardapio"
+							value="#{itemMB.item.cardapio.cardapioId}" />
+
 						<h:commandButton value="Salvar" action="#{itemMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -115,7 +121,7 @@
 							<f:convertNumber pattern="R$ #0.00" />
 						</h:outputText>
 					</h:column>
-					
+
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Cardapio" />

@@ -25,9 +25,9 @@ public class Item {
 	private float itemPreco;
 	@ManyToOne
 	@JoinColumn(name="cardapio_id", 
-				insertable=false, updatable=false, 
-				nullable=false)
-	private Cardapio cardapio;
+				insertable=true, updatable=true, 
+				nullable=true)
+	private Cardapio cardapio  = new Cardapio();
 	
 public Item() {
 		

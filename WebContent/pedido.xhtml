@@ -61,18 +61,23 @@
 							rendered="#{pedidoMB.pedido.pedidoId != null}" />
 						<h:inputText id="id" value="#{pedidoMB.pedido.pedidoId}"
 							rendered="#{pedidoMB.pedido.pedidoId != null}" readonly="true" />
+
 						<h:outputLabel value="Prato:" for="nomeprato" />
 						<h:inputText id="nomeprato" value="#{pedidoMB.pedido.nomePrato}" />
+
 						<h:outputLabel value="Quantidade:" for="quantidade" />
 						<h:inputText id="quantidade" value="#{pedidoMB.pedido.qtdPedido}" />
+
 						<h:outputLabel value="Preço:" for="totalvalor" />
 						<h:inputText id="totalvalor" value="#{pedidoMB.pedido.totalValor}" />
+
 						<h:outputLabel value="Metodo Pagamento:" for="formapagamento" />
 						<h:inputText id="formapagamento"
 							value="#{pedidoMB.pedido.cartao.cartaoId}" />
+
 						<h:outputLabel value="Local de Entrega:" for="local" />
-						<h:inputText id="local"
-							value="#{pedidoMB.pedido.local.localId}" />
+						<h:inputText id="local" value="#{pedidoMB.pedido.local.localId}" />
+
 						<h:commandButton action="#{pedidoMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -121,8 +126,8 @@
 						</f:facet>
 					#{pedido.local.localNome}
 				</h:column>
-				
-				<h:column>
+
+					<h:column>
 						<h:commandLink action="#{pedidoMB.excluir}" value="Remover">
 							<f:ajax render="@form" />
 							<f:setPropertyActionListener target="#{pedidoMB.pedido}"
@@ -137,7 +142,7 @@
 								value="#{pedido}" />
 						</h:commandLink>
 					</h:column>
-				
+
 				</h:dataTable>
 			</h:form>
 		</div>

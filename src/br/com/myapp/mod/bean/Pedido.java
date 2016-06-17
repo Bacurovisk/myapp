@@ -28,15 +28,15 @@ public class Pedido {
 	
 	@ManyToOne
 	@JoinColumn(name="cartao_id", 
-				insertable=false, updatable=false, 
-				nullable=false)
-	private Cartao cartao;
+				insertable=true, updatable=true, 
+				nullable=true)
+	private Cartao cartao = new Cartao();
 	
 	@ManyToOne
 	@JoinColumn(name="local_id", 
-				insertable=false, updatable=false, 
-				nullable=false)
-	private Local local;
+				insertable=true, updatable=true, 
+				nullable=true)
+	private Local local = new Local();
 	
 	public Pedido() {
 		

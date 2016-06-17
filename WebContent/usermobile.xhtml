@@ -61,18 +61,25 @@
 							rendered="#{mobileMB.mobile.id != null}" />
 						<h:inputText id="id" value="#{usermobileMB.mobile.id}"
 							rendered="#{mobileMB.mobile.id != null}" readonly="true" />
+
 						<h:outputLabel value="Nome:" for="nome" />
 						<h:inputText id="nome" value="#{mobileMB.mobile.nome}" />
+
 						<h:outputLabel value="Telefone:" for="telefone" />
 						<h:inputText id="telefone" value="#{mobileMB.mobile.tel}" />
+
 						<h:outputLabel value="Total de Gastos:" for="totalgasto" />
 						<h:inputText id="totalgasto" value="#{mobileMB.mobile.totalgasto}" />
+
 						<h:outputLabel value="Avaliação:" for="avaliacao" />
 						<h:inputText id="avaliacao" value="#{mobileMB.mobile.avaliacao}" />
+
 						<h:outputLabel value="Endereço:" for="endereco" />
 						<h:inputText id="endereco" value="#{mobileMB.mobile.endereco}" />
+
 						<h:outputLabel value="Sugestões:" for="sugestao" />
 						<h:inputText id="sugestao" value="#{mobileMB.mobile.sugestao}" />
+
 						<h:commandButton action="#{mobileMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
 

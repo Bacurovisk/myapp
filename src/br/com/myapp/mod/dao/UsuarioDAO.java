@@ -36,5 +36,10 @@ public class UsuarioDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	public List<Usuario> listar2() {
+		String jpql = "Select u.nome from Usuario u order by u.nome";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 
 }

@@ -39,6 +39,7 @@ private Cardapio cardapio = new Cardapio();
 	}
 	
 	public void excluir(){
+		
 		EntityManager em = JPAUtil.getEntityManager();
 		CardapioDAO dao = new CardapioDAO(em);
 		em.getTransaction().begin();

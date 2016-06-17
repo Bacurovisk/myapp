@@ -41,6 +41,7 @@ public class UsuarioMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		UsuarioDAO dao = new UsuarioDAO(em);
 		listaUsuario = dao.listar();
+		listaUsuario = dao.listar2();
 		em.close();
 	}
 

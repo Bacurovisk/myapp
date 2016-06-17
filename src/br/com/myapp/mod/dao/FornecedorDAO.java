@@ -33,4 +33,9 @@ public class FornecedorDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	public List<Fornecedor> listar2(){
+		String jpql = "Select f.fornecedorNome from Fornecedor f order by f.fornecedorId";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 }

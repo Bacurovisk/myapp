@@ -36,4 +36,9 @@ public class PedidoDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	public List<Pedido> listar2() {
+		String jpql = "Select p.pedidoNome from Pedido p order by p.pedidoNome";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 }

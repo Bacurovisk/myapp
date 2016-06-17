@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.IndexColumn;
 
 
 
@@ -31,7 +30,6 @@ public class Local {
 	
 	@OneToMany(cascade={CascadeType.ALL})
 	@JoinColumn(name="local_id")
-	@IndexColumn(name="idx")
 	private List<Pedido> pedido;
 	
 	public Long getLocalId() {

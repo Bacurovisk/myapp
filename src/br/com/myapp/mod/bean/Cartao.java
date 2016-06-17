@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.IndexColumn;
-
 @Entity
 @Table(name="CARTAO")
 public class Cartao {
@@ -29,7 +27,6 @@ public class Cartao {
 	
 	@OneToMany(cascade={CascadeType.ALL})
 	@JoinColumn(name="cartao_id")
-	@IndexColumn(name="idx")
 	private List<Pedido> pedido;
 
 	public Long getCartaoId() {

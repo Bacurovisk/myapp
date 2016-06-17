@@ -61,10 +61,13 @@
 							rendered="#{localMB.local.localId != null}" />
 						<h:inputText id="id" value="#{localMB.local.localId}"
 							rendered="#{localMB.local.localId != null}" readonly="true" />
+
 						<h:outputLabel value="Bairro:" for="nome" />
 						<h:inputText id="nome" value="#{localMB.local.localNome}" />
+
 						<h:outputLabel value="Taxa de Entrega:" for="taxa" />
 						<h:inputText id="taxa" value="#{localMB.local.localTaxa}" />
+
 						<h:commandButton value="Salvar" action="#{localMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>

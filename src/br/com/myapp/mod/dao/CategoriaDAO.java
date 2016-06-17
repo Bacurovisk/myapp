@@ -32,6 +32,11 @@ public class CategoriaDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	public List<Categoria> listar2(){
+		String jpql = "Select c.categoriaNome from Categoria c order by c.categoriaNome";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 
 
 }

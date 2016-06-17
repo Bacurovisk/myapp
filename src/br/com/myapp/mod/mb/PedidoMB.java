@@ -33,6 +33,11 @@ public class PedidoMB {
 	public List<Pedido> getListaPedido() {
 		return listaPedido;
 	}
+	public List<Pedido> listaPedido2 = new ArrayList<Pedido>();
+
+	public List<Pedido> getListaPedido2() {
+		return listaPedido2;
+	}
 
 	@PostConstruct
 	
@@ -40,6 +45,7 @@ public class PedidoMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		PedidoDAO dao = new PedidoDAO(em);
 		listaPedido = dao.listar();
+		listaPedido = dao.listar2();
 		em.close();
 	}
 

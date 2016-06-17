@@ -61,10 +61,13 @@
 							rendered="#{cartaoMB.cartao.cartaoId != null}" />
 						<h:inputText id="id" value="#{cartaoMB.cartao.cartaoId}"
 							rendered="#{cartaoMB.cartao.cartaoId != null}" readonly="true" />
+
 						<h:outputLabel value="Bandeira:" for="nome" />
 						<h:inputText id="nome" value="#{cartaoMB.cartao.cartaoNome}" />
+
 						<h:outputLabel value="Numero de Parcelas:" for="parcela" />
 						<h:inputText id="parcela" value="#{cartaoMB.cartao.cartaoParcela}" />
+
 						<h:commandButton action="#{cartaoMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>

@@ -1,7 +1,6 @@
 package br.com.myapp.mod.bean;
 import javax.persistence.Entity;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.IndexColumn;
-
 
 @Entity
 @Table(name="CARDAPIO")
@@ -23,33 +20,37 @@ public class Cardapio {
 	@GeneratedValue
 	@Column(name="CARDAPIO_ID")
 	private Long cardapioId;
+	
 	@Column(name="CARDAPIO_TITULO")
 	private String cardapioTitulo;
+	
 	@Column(name="CARDAPIO_PERIODO")
-	private Date cardapioPeriodo;
+	private String cardapioPeriodo;
+	
 	@Column(name="CARDAPIO_INF")
 	private String cardapioExtra;
+	
 	@ManyToOne
 	@JoinColumn(name="categoria_id", 
-				insertable=false, updatable=false, 
-				nullable=false)
-	private Categoria categoria;
+				insertable=true, updatable=true, 
+				nullable=true)
+	private Categoria categoria = new Categoria();
+
 	
 	@Column(name="CARDAPIO_DESC")
 	private String descSimples;
 	
 	@OneToMany(cascade={CascadeType.ALL})
 	@JoinColumn(name="cardapio_id")
-	@IndexColumn(name="idx")
 	private List<Item> item;
 	
     public Cardapio() {
 		
 	}
 	
-	public Cardapio(String cardapioTitulo, String cardapioExtra) {
+	public Cardapio(String cardapioTitulo, String cardapioExtra, String cardapioPeriodo ) {
 		this.cardapioTitulo = cardapioTitulo;
-		this.cardapioPeriodo = new Date(System.currentTimeMillis());
+		this.cardapioPeriodo = cardapioPeriodo;
 		this.cardapioExtra = cardapioExtra;
 	}
 	
@@ -65,10 +66,10 @@ public class Cardapio {
 	public void setCardapioTitulo(String cardapioTitulo) {
 		this.cardapioTitulo = cardapioTitulo;
 	}
-	public Date getCardapioPeriodo() {
+	public String getCardapioPeriodo() {
 		return cardapioPeriodo;
 	}
-	public void setCardapioPeriodo(Date cardapioPeriodo) {
+	public void setCardapioPeriodo(String cardapioPeriodo) {
 		this.cardapioPeriodo = cardapioPeriodo;
 	}
 	public String getCardapioExtra() {
@@ -97,5 +98,8 @@ public class Cardapio {
 
 	public void setItem(List<Item> item) {
 		this.item = item;
+	}
+	public String toString(){
+		return cardapioTitulo;
 	}
 }

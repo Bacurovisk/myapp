@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.IndexColumn;
-
 @Entity
 @Table(name="CATEGORIA")
 public class Categoria {
@@ -29,8 +27,7 @@ public class Categoria {
 	private String categoriaItem;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	@JoinColumn(name="fornecedor_id")
-	@IndexColumn(name="idx")
+	@JoinColumn(name="categoria_id")
 	private List<Cardapio> cardapio;
 	
 	
@@ -57,5 +54,8 @@ public class Categoria {
 	}
 	public void setCardapio(List<Cardapio> cardapio) {
 		this.cardapio = cardapio;
+	}
+	public String toString(){
+		return categoriaNome;
 	}
 }

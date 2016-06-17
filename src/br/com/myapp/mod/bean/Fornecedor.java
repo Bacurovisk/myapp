@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.IndexColumn;
 
 @Entity
 @Table(name="FORNECEDOR")
@@ -28,7 +27,6 @@ public class Fornecedor {
 	
 	@OneToMany(cascade={CascadeType.ALL})
 	@JoinColumn(name="fornecedor_id")
-	@IndexColumn(name="idx")
 	private List<Compras> compras;
 	
 	public Long getFornecedorId() {

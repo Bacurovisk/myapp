@@ -34,4 +34,10 @@ public class LocalDAO {
 		return query.getResultList();
 	}
 	
+	public List<Local> listar2(){
+		String jpql = "Select l.localNome from Local l order by l.localNome";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
+	
 }

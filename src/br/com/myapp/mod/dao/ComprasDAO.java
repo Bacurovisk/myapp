@@ -32,4 +32,10 @@ public class ComprasDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	public List<Compras> listar2(){
+		String jpql = "Select cp.compraNome from Compras cp order by cp.compraId";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 }

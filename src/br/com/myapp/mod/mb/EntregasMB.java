@@ -30,12 +30,18 @@ public class EntregasMB {
 	public List<Entregas> getListaEntregas() {
 		return listaEntregas;
 	}
+	public List<Entregas> listaEntregas2 = new ArrayList<Entregas>();
+
+	public List<Entregas> getListaEntregas2() {
+		return listaEntregas2;
+	}
 
 	@PostConstruct
 	public void carregarEntregas() {
 		EntityManager em = JPAUtil.getEntityManager();
 		EntregasDAO dao = new EntregasDAO(em);
 		listaEntregas = dao.listar();
+		listaEntregas2 = dao.listar2();
 		em.close();
 	}
 

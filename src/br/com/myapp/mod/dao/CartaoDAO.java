@@ -32,4 +32,10 @@ public class CartaoDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	public List<Cartao> listar2(){
+		String jpql = "Select c.cartaoNome from Cartao c order by c.cartaoId";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 }

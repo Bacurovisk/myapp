@@ -61,14 +61,19 @@
 							rendered="#{usuarioMB.usuario.id != null}" />
 						<h:inputText id="id" value="#{usuarioMB.usuario.id}"
 							rendered="#{usuarioMB.usuario.id != null}" readonly="true" />
+
 						<h:outputLabel value="Nome:" for="nome" />
 						<h:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+
 						<h:outputLabel value="E-mail:" for="email" />
 						<h:inputText id="email" value="#{usuarioMB.usuario.email}" />
+
 						<h:outputLabel value="Função:" for="funcao" />
 						<h:inputText id="funcao" value="#{usuarioMB.usuario.funcao}" />
+
 						<h:outputLabel value="Senha:" for="senha" />
 						<h:inputText id="senha" value="#{usuarioMB.usuario.senha}" />
+
 						<h:commandButton action="#{usuarioMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>

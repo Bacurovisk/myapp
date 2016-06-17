@@ -32,6 +32,12 @@ public class CardapioDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	public List<Cardapio> listar2(){
+		String jpql = "Select c.cardapioTitulo from Cardapio c order by c.cardapioTitulo";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 
 }
 

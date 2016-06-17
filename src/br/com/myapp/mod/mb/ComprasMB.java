@@ -33,6 +33,12 @@ public class ComprasMB {
 	public List<Compras> getListaCompras() {
 		return listaCompras;
 	}
+	
+	public List<Compras> listaCompras2 = new ArrayList<Compras>();
+
+	public List<Compras> getListaCompras2() {
+		return listaCompras2;
+	}
 
 	@PostConstruct 
 	
@@ -40,6 +46,7 @@ public class ComprasMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		ComprasDAO dao = new ComprasDAO(em);
 		listaCompras = dao.listar();
+		listaCompras2 = dao.listar2();
 		em.close();
 	}
 

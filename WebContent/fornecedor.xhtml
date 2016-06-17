@@ -60,12 +60,19 @@
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Id:" for="id"
 							rendered="#{fornecedorMB.fornecedor.fornecedorId != null}" />
-						<h:inputText id="id" value="#{fornecedorMB.fornecedor.fornecedorId}"
-							rendered="#{fornecedorMB.fornecedor.fornecedorId != null}" readonly="true" />
+						<h:inputText id="id"
+							value="#{fornecedorMB.fornecedor.fornecedorId}"
+							rendered="#{fornecedorMB.fornecedor.fornecedorId != null}"
+							readonly="true" />
+
 						<h:outputLabel value="Formecedor:" for="nome" />
-						<h:inputText id="nome" value="#{fornecedorMB.fornecedor.fornecedorNome}" />
+						<h:inputText id="nome"
+							value="#{fornecedorMB.fornecedor.fornecedorNome}" />
+
 						<h:outputLabel value="Produto Fornecido:" for="produto" />
-						<h:inputText id="produto" value="#{fornecedorMB.fornecedor.fornecedorProduto}" />
+						<h:inputText id="produto"
+							value="#{fornecedorMB.fornecedor.fornecedorProduto}" />
+
 						<h:commandButton value="Salvar" action="#{fornecedorMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>

@@ -31,12 +31,18 @@ public class LocalMB {
 		public List<Local> getListaLocal() {
 			return listaLocal;
 		}	
+		public List<Local> listaLocal2 = new ArrayList<Local>();
+		
+		public List<Local> getListaLocal2() {
+			return listaLocal2;
+		}
 
 		@PostConstruct
 		public void carregarLocal(){
 			EntityManager em = JPAUtil.getEntityManager();
 			LocalDAO dao = new LocalDAO(em);
 			listaLocal = dao.listar();
+			listaLocal2 = dao.listar2();
 			em.close();
 		}
 		

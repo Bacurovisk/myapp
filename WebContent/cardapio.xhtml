@@ -60,16 +60,20 @@
 						<h:outputLabel value="Id:" for="id"
 							rendered="#{cardapioMB.cardapio.cardapioId != null}" />
 						<h:inputText id="id" value="#{cardapioMB.cardapio.cardapioId}"
-							rendered="#{cardapioMB.cardapio.cardapioId != null}" readonly="true" />
+							rendered="#{cardapioMB.cardapio.cardapioId != null}"
+							readonly="true" />
 
 						<h:outputLabel value="Titulo Cardapio:" for="nome" />
-						<h:inputText id="nome" value="#{cardapioMB.cardapio.cardapioTitulo}" />
+						<h:inputText id="nome"
+							value="#{cardapioMB.cardapio.cardapioTitulo}" />
 
 						<h:outputLabel value="Periodo:" for="periodo" />
-						<h:inputText id="periodo" value="#{cardapioMB.cardapio.cardapioPeriodo}" />
+						<h:inputText id="periodo"
+							value="#{cardapioMB.cardapio.cardapioPeriodo}" />
 
 						<h:outputLabel value="Informações Extra:" for="extra" />
-						<h:inputText id="extra" value="#{cardapioMB.cardapio.cardapioExtra}" />
+						<h:inputText id="extra"
+							value="#{cardapioMB.cardapio.cardapioExtra}" />
 
 						<h:outputLabel value="Categoria:" for="categoria" />
 						<h:inputText id="categoria"
@@ -82,7 +86,7 @@
 						<h:commandButton value="Salvar" action="#{cardapioMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
-						
+
 					</h:panelGrid>
 				</fieldset>
 			</h:form>

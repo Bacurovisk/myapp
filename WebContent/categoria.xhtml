@@ -60,11 +60,17 @@
 						<h:outputLabel value="Id:" for="id"
 							rendered="#{categoriaMB.categoria.categoriaId != null}" />
 						<h:inputText id="id" value="#{categoriaMB.categoria.categoriaId}"
-							rendered="#{categoriaMB.categoria.categoriaId != null}" readonly="true" />
+							rendered="#{categoriaMB.categoria.categoriaId != null}"
+							readonly="true" />
+
 						<h:outputLabel value="Nome:" for="categoria" />
-						<h:inputText id="categoria" value="#{categoriaMB.categoria.categoriaNome}" />
+						<h:inputText id="categoria"
+							value="#{categoriaMB.categoria.categoriaNome}" />
+
 						<h:outputLabel value="Item:" for="item" />
-						<h:inputText id="item" value="#{categoriaMB.categoria.categoriaItem}" />
+						<h:inputText id="item"
+							value="#{categoriaMB.categoria.categoriaItem}" />
+
 						<h:commandButton value="Salvar" action="#{categoriaMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
 						</h:commandButton>
@@ -83,8 +89,8 @@
 						</f:facet>
 					#{categoria.categoriaNome}
 				</h:column>
-				
-				<h:column>
+
+					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Item" />
 						</f:facet>

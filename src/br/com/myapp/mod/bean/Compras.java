@@ -18,9 +18,9 @@ public class Compras {
 
 	@ManyToOne
 	@JoinColumn(name="fornecedor_id", 
-				insertable=false, updatable=false, 
-				nullable=false)
-	private Fornecedor fornecedor;
+				insertable=true, updatable=true, 
+				nullable=true)
+	private Fornecedor fornecedor = new Fornecedor();
 	
 	@Column(name="compras_desc_compra")
 	private String descCompra;

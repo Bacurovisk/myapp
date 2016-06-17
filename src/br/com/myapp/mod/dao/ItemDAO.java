@@ -34,5 +34,11 @@ public class ItemDAO {
 		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	public List<Item> listar2(){
+		String jpql = "Select c.itemNome from Item c order by c.itemId";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
 
 }

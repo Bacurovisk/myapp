@@ -43,5 +43,14 @@ public class EntregasDAO {
 		return query.getResultList();
 	}
 	
+	public List<Entregas> listar2(){
+		
+		//String jpql = "from Entregas e, Pedido p"; // 	Quando faz o n=inner join ele não mostra os campos
+		String jpql = "Select e.nome from Entregas e order by e.id";
+		//String jpql = "select e from Entregas e inner join e.localentrega order by e.nome";
+		Query query = entityManager.createQuery(jpql);
+		return query.getResultList();
+	}
+	
 	
 }
