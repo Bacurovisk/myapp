@@ -23,8 +23,8 @@ public class Categoria {
 	@Column(name="CATEGORIA_NOME")
 	private String categoriaNome;
 	
-	@Column(name="CATEGORIA_ITEM")
-	private String categoriaItem;
+	@Column(name="CATEGORIA_DESC")
+	private String categoriaDesc;
 	
 	@OneToMany(cascade={CascadeType.ALL})
 	@JoinColumn(name="categoria_id")
@@ -43,11 +43,11 @@ public class Categoria {
 	public void setCategoriaNome(String categoriaNome) {
 		this.categoriaNome = categoriaNome;
 	}
-	public String getCategoriaItem() {
-		return categoriaItem;
+	public String getCategoriaDesc() {
+		return categoriaDesc;
 	}
-	public void setCategoriaItem(String categoriaItem) {
-		this.categoriaItem = categoriaItem;
+	public void setCategoriaDesc(String categoriaDesc) {
+		this.categoriaDesc = categoriaDesc;
 	}
 	public List<Cardapio> getCardapio() {
 		return cardapio;

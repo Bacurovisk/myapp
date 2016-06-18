@@ -2,11 +2,11 @@ package br.com.myapp.mod.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Categoria;
 
-@SuppressWarnings("unchecked")
+
 public class CategoriaDAO {
 	private EntityManager entityManager;
 
@@ -29,14 +29,8 @@ public class CategoriaDAO {
 	
 	public List<Categoria> listar(){
 		String jpql = "Select c from Categoria c order by c.categoriaId";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Categoria> query = entityManager.createQuery(jpql, Categoria.class);
 		return query.getResultList();
 	}
-	public List<Categoria> listar2(){
-		String jpql = "Select c.categoriaNome from Categoria c order by c.categoriaNome";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-
 
 }

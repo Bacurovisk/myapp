@@ -31,19 +31,12 @@ private Item item = new Item();
 	public List<Item> getListaItem(){
 		return listaItem;
 	}
-	public List<Item> listaItem2 = new ArrayList<Item>();
-	
-	public List<Item> getListaItem2(){
-		return listaItem2;
-	}
-	
 	
 	@PostConstruct
 	public void carregarItem(){
 		EntityManager em = JPAUtil.getEntityManager();
 		ItemDAO dao = new ItemDAO(em);
 		listaItem = dao.listar();
-		listaItem2 = dao.listar2();
 		em.close();
 	}
 	

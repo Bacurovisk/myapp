@@ -75,10 +75,15 @@
 
 						<h:outputLabel value="Preço:" for="preco" />
 						<h:inputText id="preco" value="#{itemMB.item.itemPreco}" />
-
-						<h:outputLabel value="Cardapio:" for="cardapio" />
-						<h:inputText id="cardapio"
-							value="#{itemMB.item.cardapio.cardapioId}" />
+						
+						<p:outputLabel for="cardapio" value="Cardapio: " />
+						<p:selectOneMenu id="cardapio"
+							value="#{itemMB.item.cardapio.cardapioId}">
+							<f:selectItem itemLabel="Selecione um" itemValue="" />
+							<f:selectItems value="#{cardapioMB.listaCardapio}" var="list"
+								itemValue="#{list.cardapioId}"
+								itemLabel="#{list.cardapioTitulo}" />
+						</p:selectOneMenu>
 
 						<h:commandButton value="Salvar" action="#{itemMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />

@@ -62,9 +62,14 @@
 						<h:inputText id="id" value="#{comprasMB.compras.compraId}"
 							rendered="#{comprasMB.compras.compraId != null}" readonly="true" />
 
-						<h:outputLabel value="Produto:" for="nome" />
-						<h:inputText id="nome"
-							value="#{comprasMB.compras.fornecedor.fornecedorId}" />
+						<p:outputLabel for="nome" value="Produto: " />
+						<p:selectOneMenu id="nome"
+							value="#{comprasMB.compras.fornecedor.fornecedorId}">
+							<f:selectItem itemLabel="Selecione um" itemValue="" />
+							<f:selectItems value="#{fornecedorMB.listaFornecedor}" var="list"
+								itemValue="#{list.fornecedorId}"
+								itemLabel="#{list.fornecedorProduto}" />
+						</p:selectOneMenu>
 
 						<h:outputLabel value="Descrição:" for="descricao" />
 						<h:inputText id="descricao"

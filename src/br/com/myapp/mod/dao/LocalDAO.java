@@ -2,11 +2,9 @@ package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Local;
-
-@SuppressWarnings("unchecked")
 
 public class LocalDAO {
 	private EntityManager entityManager;
@@ -30,14 +28,7 @@ public class LocalDAO {
 	
 	public List<Local> listar(){
 		String jpql = "Select l from Local l order by l.localId";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Local> query = entityManager.createQuery(jpql, Local.class);
 		return query.getResultList();
 	}
-	
-	public List<Local> listar2(){
-		String jpql = "Select l.localNome from Local l order by l.localNome";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-	
 }

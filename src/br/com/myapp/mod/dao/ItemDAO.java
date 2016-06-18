@@ -3,11 +3,10 @@ package br.com.myapp.mod.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Item;
 
-@SuppressWarnings("unchecked")
 public class ItemDAO {
 	
 	private EntityManager entityManager;
@@ -31,14 +30,7 @@ public class ItemDAO {
 	
 	public List<Item> listar(){
 		String jpql = "Select c from Item c order by c.itemId";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Item> query = entityManager.createQuery(jpql, Item.class);
 		return query.getResultList();
 	}
-	
-	public List<Item> listar2(){
-		String jpql = "Select c.itemNome from Item c order by c.itemId";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-
 }

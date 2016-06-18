@@ -27,7 +27,7 @@ public Usuario getUsuario(String nome, String senha) {
             return null;
       }
 }
-
+/*
 public boolean inserirUsuario(Usuario usuario) {
       try {
             em.persist(usuario);
@@ -47,4 +47,5 @@ public boolean deletarUsuario(Usuario usuario) {
             return false;
       }
 }
+*/
 }

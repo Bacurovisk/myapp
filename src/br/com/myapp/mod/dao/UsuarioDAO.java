@@ -2,11 +2,10 @@ package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Usuario;
 
-@SuppressWarnings("unchecked")
 public class UsuarioDAO {
 
 	private EntityManager entityManager;
@@ -33,15 +32,8 @@ public class UsuarioDAO {
 
 	public List<Usuario> listar() {
 		String jpql = "Select u from Usuario u order by u.nome";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Usuario> query = entityManager.createQuery(jpql, Usuario.class);
 		return query.getResultList();
 	}
-	
-	public List<Usuario> listar2() {
-		String jpql = "Select u.nome from Usuario u order by u.nome";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-	
 
 }

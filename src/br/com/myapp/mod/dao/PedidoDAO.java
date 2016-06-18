@@ -2,11 +2,10 @@ package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Pedido;
 
-@SuppressWarnings("unchecked")
 public class PedidoDAO {
 	private EntityManager entityManager;
 
@@ -33,7 +32,7 @@ public class PedidoDAO {
 	
 	public List<Pedido> listar() {
 		String jpql = "Select p from Pedido p order by p.pedidoId";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Pedido> query = entityManager.createQuery(jpql, Pedido.class);
 		return query.getResultList();
 	}
 }

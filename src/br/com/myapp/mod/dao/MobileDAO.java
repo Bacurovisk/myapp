@@ -3,10 +3,10 @@ package br.com.myapp.mod.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Mobile;
-@SuppressWarnings("unchecked")
+
 public class MobileDAO {
 	private EntityManager entityManager;
 
@@ -33,7 +33,7 @@ public class MobileDAO {
 	
 	public List<Mobile> listar() {
 		String jpql = "Select m from Mobile m order by m.id";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Mobile> query = entityManager.createQuery(jpql, Mobile.class);
 		return query.getResultList();
 	}
 }

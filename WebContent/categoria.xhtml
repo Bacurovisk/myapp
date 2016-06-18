@@ -63,13 +63,13 @@
 							rendered="#{categoriaMB.categoria.categoriaId != null}"
 							readonly="true" />
 
-						<h:outputLabel value="Nome:" for="categoria" />
+						<h:outputLabel value="Nome Categoria:" for="categoria" />
 						<h:inputText id="categoria"
 							value="#{categoriaMB.categoria.categoriaNome}" />
-
-						<h:outputLabel value="Item:" for="item" />
-						<h:inputText id="item"
-							value="#{categoriaMB.categoria.categoriaItem}" />
+							
+							<h:outputLabel value="Descrição Categoria:" for="descatg" />
+						<p:inputTextarea rows="3" cols="20" id="descatg"
+							value="#{categoriaMB.categoria.categoriaDesc}" />
 
 						<h:commandButton value="Salvar" action="#{categoriaMB.salvar}">
 							<f:ajax execute="@form" render="@form :tabela" />
@@ -85,16 +85,16 @@
 
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Nome" />
+							<h:outputText value="Nome Categoria" />
 						</f:facet>
 					#{categoria.categoriaNome}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Item" />
+							<h:outputText value="Descrição Categoria" />
 						</f:facet>
-					#{categoria.categoriaItem}
+					#{categoria.categoriaDesc}
 				</h:column>
 
 

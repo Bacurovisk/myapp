@@ -2,11 +2,9 @@ package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Fornecedor;
-
-@SuppressWarnings("unchecked")
 
 public class FornecedorDAO {
 	private EntityManager entityManager;
@@ -30,12 +28,7 @@ public class FornecedorDAO {
 	
 	public List<Fornecedor> listar(){
 		String jpql = "Select f from Fornecedor f order by f.fornecedorId";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-	public List<Fornecedor> listar2(){
-		String jpql = "Select f.fornecedorNome from Fornecedor f order by f.fornecedorId";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Fornecedor> query = entityManager.createQuery(jpql, Fornecedor.class);
 		return query.getResultList();
 	}
 }

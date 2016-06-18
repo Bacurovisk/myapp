@@ -73,8 +73,15 @@
 						<h:outputLabel value="Total:" for="total" />
 						<h:inputText id="total" value="#{entregasMB.entregas.total}" />
 
-						<h:outputLabel value="Status:" for="status" />
-						<h:inputText id="status" value="#{entregasMB.entregas.status}" />
+						<p:outputLabel for="status" value="Status: " />
+						<p:selectOneMenu id="status" value="#{entregasMB.entregas.status}"
+							style="width:125px">
+							<f:selectItem itemLabel="Selecione um" itemValue="" />
+							<f:selectItem itemLabel="Recebido" itemValue="Recebido" />
+							<f:selectItem itemLabel="Em Preparo" itemValue="Em Preparo" />
+							<f:selectItem itemLabel="Saiu Para Entrega"
+								itemValue="Saiu Para Entrega" />
+						</p:selectOneMenu>
 
 						<h:commandButton action="#{entregasMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />

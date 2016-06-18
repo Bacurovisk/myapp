@@ -2,11 +2,10 @@ package br.com.myapp.mod.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Cardapio;
 
-@SuppressWarnings("unchecked")
 public class CardapioDAO {
 	private EntityManager entityManager;
 
@@ -29,15 +28,9 @@ public class CardapioDAO {
 	
 	public List<Cardapio> listar(){
 		String jpql = "Select c from Cardapio c order by c.cardapioId";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Cardapio> query = entityManager.createQuery(jpql, Cardapio.class);
 		return query.getResultList();
 	}
 	
-	public List<Cardapio> listar2(){
-		String jpql = "Select c.cardapioTitulo from Cardapio c order by c.cardapioTitulo";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-
 }
 

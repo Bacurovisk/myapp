@@ -33,11 +33,6 @@ public class CartaoMB {
 	public List<Cartao> getListaCartao() {
 		return listaCartao;
 	}
-	public List<Cartao> listaCartao2 = new ArrayList<Cartao>();
-
-	public List<Cartao> getListaCartao2() {
-		return listaCartao2;
-	}
 
 	@PostConstruct
 	
@@ -45,7 +40,6 @@ public class CartaoMB {
 		EntityManager em = JPAUtil.getEntityManager();
 		CartaoDAO dao = new CartaoDAO(em);
 		listaCartao = dao.listar();
-		listaCartao2 = dao.listar2();
 		em.close();
 	}
 

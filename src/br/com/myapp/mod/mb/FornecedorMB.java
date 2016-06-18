@@ -32,18 +32,11 @@ public class FornecedorMB {
 		return listaFornecedor;
 	}
 
-	public List<Fornecedor> listaFornecedor2 = new ArrayList<Fornecedor>();
-
-	public List<Fornecedor> getListaFornecedor2() {
-		return listaFornecedor2;
-	}
-
 	@PostConstruct
 	public void carregarFornecedor() {
 		EntityManager em = JPAUtil.getEntityManager();
 		FornecedorDAO dao = new FornecedorDAO(em);
 		listaFornecedor = dao.listar();
-		listaFornecedor2 = dao.listar2();
 		em.close();
 	}
 

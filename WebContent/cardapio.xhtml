@@ -67,17 +67,23 @@
 						<h:inputText id="nome"
 							value="#{cardapioMB.cardapio.cardapioTitulo}" />
 
-						<h:outputLabel value="Periodo:" for="periodo" />
-						<h:inputText id="periodo"
-							value="#{cardapioMB.cardapio.cardapioPeriodo}" />
+						<p:outputLabel for="periodo" value="Periodo:" />
+						<p:calendar id="periodo"
+							value="#{cardapioMB.cardapio.cardapioPeriodo}"
+							pattern="MM/dd/yyyy HH:mm:ss" />
 
 						<h:outputLabel value="Informações Extra:" for="extra" />
 						<h:inputText id="extra"
 							value="#{cardapioMB.cardapio.cardapioExtra}" />
 
-						<h:outputLabel value="Categoria:" for="categoria" />
-						<h:inputText id="categoria"
-							value="#{cardapioMB.cardapio.categoria.categoriaId}" />
+						<p:outputLabel for="categoria" value="Categoria: " />
+						<p:selectOneMenu id="categoria"
+							value="#{cardapioMB.cardapio.categoria.categoriaId}">
+							<f:selectItem itemLabel="Selecione um" itemValue="" />
+							<f:selectItems value="#{categoriaMB.listaCategoria}" var="list"
+								itemValue="#{list.categoriaId}"
+								itemLabel="#{list.categoriaNome}" />
+						</p:selectOneMenu>
 
 						<h:outputLabel value="Descrição Simples:" for="descsimples" />
 						<p:inputTextarea rows="3" cols="20" id="descsimples"
@@ -92,6 +98,7 @@
 			</h:form>
 
 			<h2>Listagem dos Cardapios</h2>
+
 			<h:form id="tabela">
 				<h:dataTable value="#{cardapioMB.listaCardapio}" var="cardapio"
 					styleClass="dados" rowClasses="impar,par">

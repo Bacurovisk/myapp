@@ -3,10 +3,10 @@ package br.com.myapp.mod.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Cartao;
-@SuppressWarnings("unchecked")
+
 public class CartaoDAO {
 	private EntityManager entityManager;
 
@@ -29,13 +29,7 @@ public class CartaoDAO {
 	
 	public List<Cartao> listar(){
 		String jpql = "Select c from Cartao c order by c.cartaoId";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-	
-	public List<Cartao> listar2(){
-		String jpql = "Select c.cartaoNome from Cartao c order by c.cartaoId";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Cartao> query = entityManager.createQuery(jpql, Cartao.class);
 		return query.getResultList();
 	}
 }

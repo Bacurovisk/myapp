@@ -71,12 +71,21 @@
 						<h:outputLabel value="Preço:" for="totalvalor" />
 						<h:inputText id="totalvalor" value="#{pedidoMB.pedido.totalValor}" />
 
-						<h:outputLabel value="Metodo Pagamento:" for="formapagamento" />
-						<h:inputText id="formapagamento"
-							value="#{pedidoMB.pedido.cartao.cartaoId}" />
+						<p:outputLabel for="formapagamento" value="Metodo Pagamento: " />
+						<p:selectOneMenu id="formapagamento"
+							value="#{pedidoMB.pedido.cartao.cartaoId}">
+							<f:selectItem itemLabel="Selecione um" itemValue="" />
+							<f:selectItems value="#{cartaoMB.listaCartao}" var="list"
+								itemValue="#{list.cartaoId}" itemLabel="#{list.cartaoNome}" />
+						</p:selectOneMenu>
 
-						<h:outputLabel value="Local de Entrega:" for="local" />
-						<h:inputText id="local" value="#{pedidoMB.pedido.local.localId}" />
+						<p:outputLabel for="local" value="Local de Entrega: " />
+						<p:selectOneMenu id="local"
+							value="#{pedidoMB.pedido.local.localId}">
+							<f:selectItem itemLabel="Selecione um" itemValue="" />
+							<f:selectItems value="#{localMB.listaLocal}" var="list"
+								itemValue="#{list.localId}" itemLabel="#{list.localNome}" />
+						</p:selectOneMenu>
 
 						<h:commandButton action="#{pedidoMB.salvar}" value="Salvar">
 							<f:ajax execute="@form" render="@form :tabela" />

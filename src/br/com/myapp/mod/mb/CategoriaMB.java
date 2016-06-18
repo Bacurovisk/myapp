@@ -30,18 +30,17 @@ private Categoria categoria = new Categoria();
 	public List<Categoria> getListaCategoria(){
 		return listaCategoria;
 	}
-	public List<Categoria> listaCategoria2 = new ArrayList<Categoria>();
-	
-	public List<Categoria> getListaCategoria2(){
-		return listaCategoria2;
-	}
 	
 	@PostConstruct
 	public void carregarCategoria(){
 		EntityManager em = JPAUtil.getEntityManager();
 		CategoriaDAO dao = new CategoriaDAO(em);
 		listaCategoria = dao.listar();
-		listaCategoria2 = dao.listar2();
+		/*
+		for (Categoria categoria : listaCategoria2) {
+			System.out.println(categoria.getCategoriaNome());
+		}
+		*/
 		em.close();
 	}
 	

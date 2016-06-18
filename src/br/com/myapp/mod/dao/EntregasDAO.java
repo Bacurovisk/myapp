@@ -3,11 +3,10 @@ package br.com.myapp.mod.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.myapp.mod.bean.Entregas;
 
-@SuppressWarnings("unchecked")
 
 public class EntregasDAO {
 	private EntityManager entityManager;
@@ -35,22 +34,8 @@ public class EntregasDAO {
 
 	
 	public List<Entregas> listar(){
-		
-		//String jpql = "from Entregas e, Pedido p"; // 	Quando faz o n=inner join ele não mostra os campos
 		String jpql = "Select e from Entregas e order by e.id";
-		//String jpql = "select e from Entregas e inner join e.localentrega order by e.nome";
-		Query query = entityManager.createQuery(jpql);
+		TypedQuery<Entregas> query = entityManager.createQuery(jpql, Entregas.class);
 		return query.getResultList();
-	}
-	
-	public List<Entregas> listar2(){
-		
-		//String jpql = "from Entregas e, Pedido p"; // 	Quando faz o n=inner join ele não mostra os campos
-		String jpql = "Select e.nome from Entregas e order by e.id";
-		//String jpql = "select e from Entregas e inner join e.localentrega order by e.nome";
-		Query query = entityManager.createQuery(jpql);
-		return query.getResultList();
-	}
-	
-	
+	}	
 }
